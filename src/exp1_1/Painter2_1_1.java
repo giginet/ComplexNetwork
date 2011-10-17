@@ -7,18 +7,105 @@
  */
 package exp1_1;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import java.util.Random;
 
 /**
  * @author giginet
  *
  */
 public class Painter2_1_1 extends JPanel{
-  public Painter2_1_1(String windowName){
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  private BufferedImage image = null;
+  private Graphics2D imageGraphics;
+  private int width;
+  private int height;
+  
+  public void paintComponent(Graphics g){
+    /**
+     * JPanelのpaintComponentをオーバーライドして、絵を描画できるようにする
+     * @param g Graphics
+     */
+    // Graphicsでは一部利用できないメソッドなどがあるため、上位互換であるGraphics2Dにキャストする
+    Graphics2D g2 = (Graphics2D)g;
+    if(image == null){
+      Dimension d = getSize();
+      width = d.width;
+      height = d.height;
+      image = (BufferedImage)createImage(width, height);
+      
+      imageGraphics = image.createGraphics();
+      imageGraphics.setColor(Color.white);
+      imageGraphics.fillRect(0, 0, width, height);
+    }
+    
+    super.paintComponent(g);
+    imageGraphics.setColor(Color.black);
+    imageGraphics.setStroke(new BasicStroke(2));
+    /*if(currentState.getMode() == Mode.Pen || currentState.getMode() == Mode.Eraser){
+      // 現在のモードが描画モード、または消しゴムモードであるとき
+      imageGraphics.draw(new Line2D.Float(pressPoint.x, pressPoint.y, currentPoint.x, currentPoint.y));
+      pressPoint.setLocation(currentPoint);
+    }else if(currentState.getMode() == Mode.Line){
+      // 現在のモードがラインモードであるとき
+      if(release){
+        imageGraphics.draw(new Line2D.Float(pressPoint.x, pressPoint.y, releasePoint.x, releasePoint.y));
+        release = false;
+      }
+    }else if(currentState.getMode() == Mode.Box || currentState.getMode() == Mode.Circle){
+      // 現在のモードが四角、円モードであるとき
+      if(release){
+        double width = Math.abs(releasePoint.x-pressPoint.x);
+        double height = Math.abs(releasePoint.y-pressPoint.y);
+        double rootx = Math.min(pressPoint.x, releasePoint.x);
+        double rooty = Math.min(pressPoint.y, releasePoint.y);
+        if(currentState.getMode() == Mode.Box){
+          imageGraphics.draw(new Rectangle2D.Double(rootx, rooty, width, height));
+        }else{
+          imageGraphics.draw(new Ellipse2D.Double(rootx, rooty, width, height));
+        }
+        release = false;
+      }
+    }*/
+    Random rand = new Random();
+    Shape shape = Shape.values()[rand.nextInt(Shape.values().length)];
+    Color color = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+    imageGraphics.setColor(color);
+    if(shape == Shape.Line){
+      imageGraphics.draw(new Line2D.Float(rand.nextInt(width), rand.nextInt(height), rand.nextInt(width), rand.nextInt(height)));
+    }else{
+      double rootx = rand.nextInt(width);
+      double rooty = rand.nextInt(height);
+      int w = rand.nextInt(width-(int)rootx);
+      int h = rand.nextInt(height-(int)rooty);
+      if(shape == Shape.Circle || shape == Shape.FillCircle){
+        Ellipse2D s = new Ellipse2D.Double(rootx, rooty, w, h);
+        imageGraphics.draw(s);
+        if(shape == Shape.FillCircle) imageGraphics.fill(s);
+      }else if(shape == Shape.Box || shape == Shape.FillBox){
+        Rectangle2D s = new Rectangle2D.Double(rootx, rooty, w, h);
+        imageGraphics.draw(s);
+        if(shape == Shape.FillBox) imageGraphics.fill(s);
+      }
+    }
+    g2.drawImage(image, 0, 0, this);
+  }
+  
+  public void draw(){
+    repaint(); 
   }
 }
