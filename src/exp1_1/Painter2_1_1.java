@@ -55,32 +55,6 @@ public class Painter2_1_1 extends JPanel{
     
     super.paintComponent(g);
     imageGraphics.setColor(Color.black);
-    imageGraphics.setStroke(new BasicStroke(2));
-    /*if(currentState.getMode() == Mode.Pen || currentState.getMode() == Mode.Eraser){
-      // 現在のモードが描画モード、または消しゴムモードであるとき
-      imageGraphics.draw(new Line2D.Float(pressPoint.x, pressPoint.y, currentPoint.x, currentPoint.y));
-      pressPoint.setLocation(currentPoint);
-    }else if(currentState.getMode() == Mode.Line){
-      // 現在のモードがラインモードであるとき
-      if(release){
-        imageGraphics.draw(new Line2D.Float(pressPoint.x, pressPoint.y, releasePoint.x, releasePoint.y));
-        release = false;
-      }
-    }else if(currentState.getMode() == Mode.Box || currentState.getMode() == Mode.Circle){
-      // 現在のモードが四角、円モードであるとき
-      if(release){
-        double width = Math.abs(releasePoint.x-pressPoint.x);
-        double height = Math.abs(releasePoint.y-pressPoint.y);
-        double rootx = Math.min(pressPoint.x, releasePoint.x);
-        double rooty = Math.min(pressPoint.y, releasePoint.y);
-        if(currentState.getMode() == Mode.Box){
-          imageGraphics.draw(new Rectangle2D.Double(rootx, rooty, width, height));
-        }else{
-          imageGraphics.draw(new Ellipse2D.Double(rootx, rooty, width, height));
-        }
-        release = false;
-      }
-    }*/
     Random rand = new Random();
     Shape shape = Shape.values()[rand.nextInt(Shape.values().length)];
     Color color = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
