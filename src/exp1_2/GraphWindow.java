@@ -22,7 +22,7 @@ public class GraphWindow extends JFrame {
     
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
-    setSize(1000, 280);
+    setSize(800, 800);
   }
   
   public static void main(String[] args) {

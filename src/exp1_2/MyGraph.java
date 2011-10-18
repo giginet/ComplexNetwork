@@ -7,8 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.lang.Math;
 
 import javax.swing.JPanel;
+
 
 public class MyGraph extends JPanel{
   /**
@@ -16,10 +18,11 @@ public class MyGraph extends JPanel{
    */
   private static final long serialVersionUID = 1L;
   private int[] hist;
+  private final int graphWidth = 800;
+  private final int graphHeight = 800;
   
   public MyGraph(){
     setBackground(Color.white);
-    setSize(1000, 250);
     this.in();
   }
   
@@ -47,7 +50,9 @@ public class MyGraph extends JPanel{
     }
     for(int i=0;i<data.length;++i){
       int index = (int)(data[i]/20);
-      hist[index+50]++;
+      if(Math.abs(index) < hist.length/2){
+        ++hist[index+hist.length/2];
+      }
     }
   }
   
@@ -55,16 +60,14 @@ public class MyGraph extends JPanel{
     super.paintComponent(g);
     
     g.setColor(Color.black);
-    g.drawLine(0, 200, 200, 200);
-    g.drawLine(100, 10, 100, 230);
-    
-    for(int x=0;x<200;x+=10) g.drawLine(x, 205, x, 195);
-    for(int y=230;y>10;y-=10) g.drawLine(95, y, 105, y);
+    g.drawLine(graphWidth/2, 0, graphWidth/2, graphHeight);
+    g.drawLine(0, (int)(graphHeight*0.9), graphWidth, (int)(graphHeight*0.9));
+    int barWidth = graphWidth/hist.length;
     
     g.setColor(Color.blue);
-    for(int d=-50; d<hist.length+49; ++d){
-      System.out.println(hist[d+50]);
-      g.drawRect(d*20, 0, 20, (int)(hist[d+50]*0.1));
+    for(int d=0; d<hist.length; ++d){
+      int h = (int)(hist[d]*0.5);
+      g.drawRect((int)((d-0.5)*barWidth), (int)(graphHeight*0.9)-h, barWidth, h);
     }
   }
 }
