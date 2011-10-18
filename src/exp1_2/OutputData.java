@@ -5,15 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
-import java.util.ArrayList;
-
 public class OutputData{
   
   double[] data;
   
-  public OutputData(){
+  public OutputData(int count){
     Random r = new Random();
-    data = new double[10000];
+    data = new double[count];
     for(int i=0;i<data.length;++i){
       data[i] = r.nextGaussian() * 200;
     }

@@ -20,14 +20,15 @@ public class MyGraph extends JPanel{
   private int[] hist;
   private final int graphWidth = 800;
   private final int graphHeight = 800;
+  private double magnifyRate = 0;
   
-  public MyGraph(){
+  public MyGraph(int count){
     setBackground(Color.white);
-    this.in();
+    this.in(count);
   }
   
-  private void in(){
-    double[] data = new double[10000];
+  private void in(int count){
+    double[] data = new double[count];
     try{
       FileReader fr = new FileReader("output.txt");
       BufferedReader br = new BufferedReader(fr);
@@ -49,11 +50,18 @@ public class MyGraph extends JPanel{
       hist[i] = 0;
     }
     for(int i=0;i<data.length;++i){
-      int index = (int)(data[i]/20);
+      int index = (int)Math.round(data[i]/20);
       if(Math.abs(index) < hist.length/2){
         ++hist[index+hist.length/2];
       }
     }
+    int max = 0;
+    for(int i=0;i<hist.length;++i){
+      if(hist[i] > max){
+        max = hist[i];
+      }
+    }
+    magnifyRate = (graphHeight * 0.8)/max;
   }
   
   public void paintComponent(Graphics g){
@@ -66,8 +74,8 @@ public class MyGraph extends JPanel{
     
     g.setColor(Color.blue);
     for(int d=0; d<hist.length; ++d){
-      int h = (int)(hist[d]*0.5);
-      g.drawRect((int)((d-0.5)*barWidth), (int)(graphHeight*0.9)-h, barWidth, h);
+      int h = (int)(hist[d]*magnifyRate);
+      g.drawRect(d*barWidth, (int)(graphHeight*0.9)-h, barWidth, h);
     }
   }
 }

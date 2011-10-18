@@ -8,15 +8,21 @@ import javax.swing.JLabel;
 
 public class GraphWindow extends JFrame {
 
-  MyGraph graph = null;
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  private MyGraph graph = null;
+  private final int count = 100000;
+  private final String fileName = "output.txt";
   
   public GraphWindow(String name){
     setTitle(name);
-    JLabel titleLabel = new JLabel("output.txt");
+    JLabel titleLabel = new JLabel(fileName);
     Container container = getContentPane();
-    OutputData data = new OutputData();
+    OutputData data = new OutputData(count);
     data.out();
-    graph = new MyGraph();
+    graph = new MyGraph(count);
     container.add(graph, BorderLayout.CENTER);
     container.add(titleLabel, BorderLayout.SOUTH);
     
