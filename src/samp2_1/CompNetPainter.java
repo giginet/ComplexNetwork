@@ -24,16 +24,12 @@ public class CompNetPainter extends JPanel{
    * 
    */
   private static final long serialVersionUID = 1L;
-  ArrayList<Node> nodes = null;
-  Network network = null;
-  BufferedImage image = null;
-  Graphics imageGraphics = null;
-  static final int nodeNum = 50;
-  static final double radius = 300.0;
-  private int w;
-  private int h;
-  private int centerX;
-  private int centerY;
+  protected ArrayList<Node> nodes = null;
+  protected Network network = null;
+  protected BufferedImage image = null;
+  protected Graphics imageGraphics = null;
+  protected static final int nodeNum = 50;
+  protected static final double radius = 300.0;
 
   public CompNetPainter(){
     nodes = new ArrayList<Node>();
@@ -43,32 +39,16 @@ public class CompNetPainter extends JPanel{
   public void paintComponent(Graphics g){
     if(image == null){
       Dimension d = this.getSize();
-      w = d.width;
-      h = d.height;
+      int w = d.width;
+      int h = d.height;
 
       image = (BufferedImage) createImage(w, h);
       imageGraphics = image.createGraphics();
 
       imageGraphics.setColor(Color.white);
       imageGraphics.fillRect(0, 0, w, h);
-
-      centerX = d.width / 2;
-      centerY = d.height / 2;
-
-      double arc = 2.0 * Math.PI / (double) nodeNum;
-
-      for(int i = 0; i < nodeNum; ++i){
-        double nArc = arc * (double) i;
-        int x = (int) (radius * Math.cos(nArc)) + centerX;
-        int y = (int) (radius * Math.sin(nArc)) + centerY;
-        nodes.add(new Node(x, y));
-      }
-
-      for(int i = 0; i < nodeNum; ++i){
-        for(int j = i + 1; j < nodeNum; ++j){
-          network.setLink(nodes.get(i), nodes.get(j));
-        }
-      }
+      createNode(d);
+      createLink();
     }
     super.paintComponent(g);
     
@@ -88,6 +68,28 @@ public class CompNetPainter extends JPanel{
       imageGraphics.fillOval(node.getX()-5, node.getY()-5, 10, 10);
     }
     g.drawImage(image, 0, 0, this);
-    
   }
+  
+  protected void createLink(){
+    for(int i = 0; i < nodeNum; ++i){
+      for(int j = i + 1; j < nodeNum; ++j){
+        network.setLink(nodes.get(i), nodes.get(j));
+      }
+    }
+  }
+  
+  protected void createNode(Dimension d){
+    int centerX = d.width / 2;
+    int centerY = d.height / 2;
+
+    double arc = 2.0 * Math.PI / (double) nodeNum;
+
+    for(int i = 0; i < nodeNum; ++i){
+      double nArc = arc * (double) i;
+      int x = (int) (radius * Math.cos(nArc)) + centerX;
+      int y = (int) (radius * Math.sin(nArc)) + centerY;
+      nodes.add(new Node(x, y));
+    }
+  }
+  
 }

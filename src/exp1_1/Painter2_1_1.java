@@ -7,7 +7,6 @@
  */
 package exp1_1;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

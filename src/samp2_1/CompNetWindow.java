@@ -7,12 +7,7 @@
  */
 package samp2_1;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
@@ -20,15 +15,23 @@ import javax.swing.JFrame;
  *
  */
 public class CompNetWindow extends JFrame{
-
   
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   public CompNetWindow(String windowName){
     setTitle(windowName);
     Container container = getContentPane();
-    CompNetPainter painter = new CompNetPainter();
+    CompNetPainter painter = getPainter();
     container.add(painter);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(600, 500);
+  }
+  
+  protected CompNetPainter getPainter(){
+    return new CompNetPainter();
   }
   
   /**
@@ -38,7 +41,6 @@ public class CompNetWindow extends JFrame{
   public static void main(String[] args){
     CompNetWindow window = new CompNetWindow("ComplexNetwork Window");
     window.setVisible(true);
-  
   }
 
 }
