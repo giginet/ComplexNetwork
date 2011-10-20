@@ -28,10 +28,16 @@ public class CompNetPainter extends JPanel{
   protected Network network = null;
   protected BufferedImage image = null;
   protected Graphics imageGraphics = null;
-  protected static final int nodeNum = 50;
+  protected int nodeNum = 50;
   protected static final double radius = 300.0;
 
   public CompNetPainter(){
+    nodes = new ArrayList<Node>();
+    network = new Network(nodeNum);
+  }
+  
+  public CompNetPainter(int nodeNum){
+    this.nodeNum = nodeNum;;
     nodes = new ArrayList<Node>();
     network = new Network(nodeNum);
   }

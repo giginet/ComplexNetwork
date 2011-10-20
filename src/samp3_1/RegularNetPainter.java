@@ -5,7 +5,7 @@
  * Created by giginet on 2011/10/18
  * 
  */
-package exp2_1;
+package samp3_1;
 
 import java.util.Random;
 
@@ -15,19 +15,19 @@ import samp2_1.CompNetPainter;
  * @author giginet
  *
  */
-public class RandomCompNetPainter extends CompNetPainter{
+public class RegularNetPainter extends CompNetPainter{
   /**
    * 
    */
   private static final long serialVersionUID = 1L;
-  private int k = 10;
+  private int k;
   
-  public RandomCompNetPainter(int nodeNum, int k){
+  public RegularNetPainter(int nodeNum, int k){
     super(nodeNum);
     this.k = k;
   }
   
-  public RandomCompNetPainter(int k){
+  public RegularNetPainter(int k){
     super();
     this.k = k;
   }
