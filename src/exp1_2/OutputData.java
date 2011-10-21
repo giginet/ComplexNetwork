@@ -7,7 +7,8 @@ import java.util.Random;
 
 public class OutputData{
   
-  double[] data;
+  private double[] data;
+  private final String outputFile = "output.txt";
   
   public OutputData(int count){
     data = new double[count];
@@ -20,7 +21,7 @@ public class OutputData{
   
   public void output(){
     try{
-      FileWriter fw = new FileWriter("output.txt");
+      FileWriter fw = new FileWriter(outputFile);
       
       BufferedWriter bw = new BufferedWriter(fw);
       

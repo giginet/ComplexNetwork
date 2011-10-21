@@ -31,7 +31,7 @@ public class GraphWindow extends JFrame {
     setSize(800, 800);
   }
   
-  private OutputData getOutput(){
+  protected OutputData getOutput(){
     return new OutputData(count);
   }
   

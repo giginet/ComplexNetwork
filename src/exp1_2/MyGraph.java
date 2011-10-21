@@ -22,6 +22,7 @@ public class MyGraph extends JPanel{
   private final int graphHeight = 800;
   private int size;
   private double magnifyRate = 0;
+  private static final String inputFile = "output.txt";
   
   public MyGraph(int size){
     setBackground(Color.white);
@@ -51,7 +52,7 @@ public class MyGraph extends JPanel{
   }
   
   private void input(){
-    double[] data = readFile("output.txt");
+    double[] data = readFile(inputFile);
     hist = new int[100];
     for(int i=0;i<hist.length;++i){
       hist[i] = 0;
