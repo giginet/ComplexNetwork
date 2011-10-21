@@ -20,17 +20,19 @@ public class MyGraph extends JPanel{
   private int[] hist;
   private final int graphWidth = 800;
   private final int graphHeight = 800;
+  private int size;
   private double magnifyRate = 0;
   
-  public MyGraph(int count){
+  public MyGraph(int size){
     setBackground(Color.white);
-    this.in(count);
+    this.size = size;
+    this.input();
   }
   
-  private void in(int count){
-    double[] data = new double[count];
+  private double[] readFile(String fileName){
+    double[] data = new double[this.size];
     try{
-      FileReader fr = new FileReader("output.txt");
+      FileReader fr = new FileReader(fileName);
       BufferedReader br = new BufferedReader(fr);
       String line;
       while((line=br.readLine())!=null){
@@ -45,6 +47,11 @@ public class MyGraph extends JPanel{
     }catch(IOException e){
       System.out.println(e);
     }
+    return data;
+  }
+  
+  private void input(){
+    double[] data = readFile("output.txt");
     hist = new int[100];
     for(int i=0;i<hist.length;++i){
       hist[i] = 0;

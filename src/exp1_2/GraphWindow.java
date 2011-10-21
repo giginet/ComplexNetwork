@@ -20,8 +20,8 @@ public class GraphWindow extends JFrame {
     setTitle(name);
     JLabel titleLabel = new JLabel(fileName);
     Container container = getContentPane();
-    OutputData data = new OutputData(count);
-    data.out();
+    OutputData data = getOutput();
+    data.output();
     graph = new MyGraph(count);
     container.add(graph, BorderLayout.CENTER);
     container.add(titleLabel, BorderLayout.SOUTH);
@@ -29,6 +29,10 @@ public class GraphWindow extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
     setSize(800, 800);
+  }
+  
+  private OutputData getOutput(){
+    return new OutputData(count);
   }
   
   public static void main(String[] args) {

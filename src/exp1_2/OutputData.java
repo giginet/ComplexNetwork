@@ -18,7 +18,7 @@ public class OutputData{
     this.data = data;
   }
   
-  public void out(){
+  public void output(){
     try{
       FileWriter fw = new FileWriter("output.txt");
       
