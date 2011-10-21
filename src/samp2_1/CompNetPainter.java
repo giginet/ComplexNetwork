@@ -24,7 +24,6 @@ public class CompNetPainter extends JPanel{
    * 
    */
   private static final long serialVersionUID = 1L;
-  protected ArrayList<Node> nodes = null;
   protected Network network = null;
   protected BufferedImage image = null;
   protected Graphics imageGraphics = null;
@@ -32,13 +31,11 @@ public class CompNetPainter extends JPanel{
   protected static final double radius = 300.0;
 
   public CompNetPainter(){
-    nodes = new ArrayList<Node>();
     network = new Network(nodeNum);
   }
   
   public CompNetPainter(int nodeNum){
     this.nodeNum = nodeNum;;
-    nodes = new ArrayList<Node>();
     network = new Network(nodeNum);
   }
 
@@ -61,8 +58,8 @@ public class CompNetPainter extends JPanel{
     imageGraphics.setColor(Color.blue);
     for(int i=0;i<nodeNum;++i){
       for(int j=i+1;j<nodeNum;++j){
-        Node n1 = nodes.get(i);
-        Node n2 = nodes.get(j);
+        Node n1 = network.getNode(i);
+        Node n2 = network.getNode(j);
         if(network.isLink(n1, n2)){
           imageGraphics.drawLine(n1.getX(), n1.getY(), n2.getX(), n2.getY());
         }
@@ -70,7 +67,7 @@ public class CompNetPainter extends JPanel{
     }
     imageGraphics.setColor(Color.red);
     for(int i=0;i<nodeNum;++i){
-      Node node = nodes.get(i);
+      Node node = network.getNode(i);
       imageGraphics.fillOval(node.getX()-5, node.getY()-5, 10, 10);
     }
     g.drawImage(image, 0, 0, this);
@@ -79,9 +76,17 @@ public class CompNetPainter extends JPanel{
   protected void createLink(){
     for(int i = 0; i < nodeNum; ++i){
       for(int j = i + 1; j < nodeNum; ++j){
-        network.setLink(nodes.get(i), nodes.get(j));
+        network.setLink(network.getNode(i), network.getNode(j));
       }
     }
+  }
+
+  public ArrayList<Double> getOrders(){
+    ArrayList<Double> list = new ArrayList<Double>();
+    for(Node n : network.getNodes()){
+      
+    }
+    return list;
   }
   
   protected void createNode(Dimension d){
@@ -94,7 +99,7 @@ public class CompNetPainter extends JPanel{
       double nArc = arc * (double) i;
       int x = (int) (radius * Math.cos(nArc)) + centerX;
       int y = (int) (radius * Math.sin(nArc)) + centerY;
-      nodes.add(new Node(x, y));
+      network.getNodes().add(new Node(x, y));
     }
   }
   

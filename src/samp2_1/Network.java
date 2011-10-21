@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class Network{
   
   private ArrayList<Link> links = null;  
- 
+  protected ArrayList<Node> nodes = null;
   private int[][] net = null;
   private int noLink;
   
   public Network(int num){
     net = new int[num][num];
+    nodes = new ArrayList<Node>();
     noLink = 2*num*num;
     for(int i=0;i<num;++i){
       for(int j=0;j<num;++j){
@@ -30,6 +31,14 @@ public class Network{
   
   public boolean isLink(Node n1, Node n2){
     return !(net[n1.getId()][n2.getId()] == noLink || net[n2.getId()][n1.getId()] == noLink);
+  }
+  
+  public Node getNode(int index){
+    return nodes.get(index);
+  }
+  
+  public ArrayList<Node> getNodes(){
+    return nodes;
   }
   
 }

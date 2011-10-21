@@ -40,9 +40,9 @@ public class SmallWorldNetPainter extends RegularNetPainter{
   protected void createLink(){
     super.createLink();
     Random rand = new Random();
-    for(Node node : nodes){
+    for(Node node : network.getNodes()){
       if(rand.nextDouble() < this.probability){
-        network.setLink(node, nodes.get(rand.nextInt(nodeNum)));
+        network.setLink(node, network.getNode(rand.nextInt(nodeNum)));
       }
     }
   }

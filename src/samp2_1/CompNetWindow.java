@@ -8,6 +8,8 @@
 package samp2_1;
 
 import java.awt.Container;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 /**

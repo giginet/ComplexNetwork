@@ -7,9 +7,6 @@
  */
 package samp3_1;
 
-import java.util.Iterator;
-import java.util.Random;
-
 import samp2_1.Node;
 import samp2_1.CompNetPainter;
 
@@ -41,7 +38,7 @@ public class RegularNetPainter extends CompNetPainter{
       for(int i=0;i<nodeNum;++i){
         for(int j=1;j<=half;++j){
           int neighborIndex = (i+j)%nodeNum;
-          network.setLink(nodes.get(i), nodes.get(neighborIndex));
+          network.setLink(network.getNode(i), network.getNode(neighborIndex));
         }
       }
     }
@@ -52,9 +49,8 @@ public class RegularNetPainter extends CompNetPainter{
    * @return
    */
   protected boolean isRegular(){
-    Iterator<Node> itr = nodes.iterator();
-    while(itr.hasNext()){
-      if(itr.next().getNeighborCount() != this.k) return false;
+    for(Node node : network.getNodes()){
+      if(node.getNeighborCount() != this.k) return false;
     }
     return true;
   }

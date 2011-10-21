@@ -39,7 +39,7 @@ public class RandomCompNetPainter extends CompNetPainter{
       for(int j = i + 1; j < nodeNum; ++j){
         double p = (double)k/(nodeNum-1);
         if(rand.nextDouble() < p){
-          network.setLink(nodes.get(i), nodes.get(j));
+          network.setLink(network.getNode(i), network.getNode(j));
         }
       }
     }
