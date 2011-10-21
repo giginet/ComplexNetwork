@@ -10,11 +10,12 @@ public class OutputData{
   double[] data;
   
   public OutputData(int count){
-    Random r = new Random();
     data = new double[count];
-    for(int i=0;i<data.length;++i){
-      data[i] = r.nextGaussian() * 200;
-    }
+    this. data = this.prepareData();
+  }
+  
+  public void setData(double[] data){
+    this.data = data;
   }
   
   public void out(){
@@ -28,5 +29,14 @@ public class OutputData{
     }catch(IOException e){
       System.out.println(e);
     }
+  }
+  
+  protected double[] prepareData(){
+    Random r = new Random();
+    double[] data = new double[this.data.length];
+    for(int i=0;i<data.length;++i){
+      data[i] = r.nextGaussian() * 200;
+    }
+    return data;
   }
 }
