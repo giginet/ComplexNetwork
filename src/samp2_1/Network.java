@@ -41,4 +41,13 @@ public class Network{
     return nodes;
   }
   
+  public double[] getOrders(){
+    double orders[] = new double[nodes.size()];
+    for(Node node : nodes){
+      int order = node.getNeighborCount();
+      ++orders[order];
+    }
+    return orders;
+  }
+  
 }

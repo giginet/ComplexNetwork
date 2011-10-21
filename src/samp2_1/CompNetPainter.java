@@ -80,14 +80,6 @@ public class CompNetPainter extends JPanel{
       }
     }
   }
-
-  public ArrayList<Double> getOrders(){
-    ArrayList<Double> list = new ArrayList<Double>();
-    for(Node n : network.getNodes()){
-      
-    }
-    return list;
-  }
   
   protected void createNode(Dimension d){
     int centerX = d.width / 2;
