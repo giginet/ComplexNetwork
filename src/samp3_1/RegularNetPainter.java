@@ -36,20 +36,12 @@ public class RegularNetPainter extends CompNetPainter{
 
   @Override
   protected void createLink(){
-    while(!this.isRegular()){
-      Iterator<Node> itr = nodes.iterator();
-      while(itr.hasNext()){
-        Node n1 = itr.next();
-        if(n1.getNeighborCount() < this.k){
-          Iterator<Node> itr2 = nodes.iterator();
-          while(itr2.hasNext()){
-            Node n2 = itr2.next();
-            if(!n1.equals(n2) && n2.getNeighborCount() < this.k){
-              System.out.println(n2.getNeighborCount());
-              network.setLink(n1, n2);
-              break;
-            }
-          }
+    int half = k/2;
+    while(!isRegular()){
+      for(int i=0;i<nodeNum;++i){
+        for(int j=1;j<=half;++j){
+          int neighborIndex = (i+j)%nodeNum;
+          network.setLink(nodes.get(i), nodes.get(neighborIndex));
         }
       }
     }
