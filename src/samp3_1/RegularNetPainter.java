@@ -7,8 +7,10 @@
  */
 package samp3_1;
 
+import java.util.Iterator;
 import java.util.Random;
 
+import samp2_1.Node;
 import samp2_1.CompNetPainter;
 
 /**
@@ -34,14 +36,35 @@ public class RegularNetPainter extends CompNetPainter{
 
   @Override
   protected void createLink(){
-    Random rand = new Random();
-    for(int i = 0; i < nodeNum; ++i){
-      for(int j = i + 1; j < nodeNum; ++j){
-        double p = (double)k/(nodeNum-1);
-        if(rand.nextDouble() < p){
-          network.setLink(nodes.get(i), nodes.get(j));
+    while(!this.isRegular()){
+      Iterator<Node> itr = nodes.iterator();
+      while(itr.hasNext()){
+        Node n1 = itr.next();
+        if(n1.getNeighborCount() < this.k){
+          Iterator<Node> itr2 = nodes.iterator();
+          while(itr2.hasNext()){
+            Node n2 = itr2.next();
+            if(!n1.equals(n2) && n2.getNeighborCount() < this.k){
+              System.out.println(n2.getNeighborCount());
+              network.setLink(n1, n2);
+              break;
+            }
+          }
         }
       }
     }
   }
+  
+  /**
+   * 全てのノードの次数がkかどうかを判定します
+   * @return
+   */
+  protected boolean isRegular(){
+    Iterator<Node> itr = nodes.iterator();
+    while(itr.hasNext()){
+      if(itr.next().getNeighborCount() != this.k) return false;
+    }
+    return true;
+  }
+  
 }

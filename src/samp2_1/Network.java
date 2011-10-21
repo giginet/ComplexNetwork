@@ -25,6 +25,7 @@ public class Network{
     links.add(link);
     net[n1.getId()][n2.getId()] = link.getId();
     net[n2.getId()][n1.getId()] = link.getId();
+    n1.connect(n2);
   }
   
   public boolean isLink(Node n1, Node n2){
