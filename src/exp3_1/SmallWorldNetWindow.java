@@ -1,9 +1,9 @@
 package exp3_1;
 
-import samp2_1.CompNetPainter;
-import samp2_1.CompNetWindow;
+import samp2_1.NetworkPainter;
+import samp2_1.NetworkWindow;
 
-public class SmallWorldNetWindow extends CompNetWindow{
+public class SmallWorldNetWindow extends NetworkWindow{
 
   /**
    * 
@@ -17,7 +17,7 @@ public class SmallWorldNetWindow extends CompNetWindow{
     super(windowName);
   }
   
-  protected CompNetPainter getPainter(){
+  protected NetworkPainter getPainter(){
     return new SmallWorldNetPainter(nodeNum, k, p);
   }
   

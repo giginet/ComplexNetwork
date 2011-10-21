@@ -1,15 +1,19 @@
 package samp2_1;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class Network{
   
   private ArrayList<Link> links = null;  
   protected ArrayList<Node> nodes = null;
+  private int nodeNum;
   private int[][] net = null;
   private int noLink;
   
   public Network(int num){
+    nodeNum = num;
     net = new int[num][num];
     nodes = new ArrayList<Node>();
     noLink = 2*num*num;
@@ -48,6 +52,25 @@ public class Network{
       ++orders[order];
     }
     return orders;
+  }
+  
+  /**
+   * @return the nodeNum
+   */
+  public int getNodeNum(){
+    return nodeNum;
+  }
+
+  protected void createLink(){
+    for(int i = 0; i < nodeNum; ++i){
+      for(int j = i + 1; j < nodeNum; ++j){
+        setLink(nodes.get(i), nodes.get(j));
+      }
+    }
+  }
+  
+  protected void createNode(int x, int y){
+    nodes.add(new Node(x, y));
   }
   
 }

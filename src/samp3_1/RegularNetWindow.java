@@ -1,9 +1,9 @@
 package samp3_1;
 
-import samp2_1.CompNetPainter;
-import samp2_1.CompNetWindow;
+import samp2_1.NetworkPainter;
+import samp2_1.NetworkWindow;
 
-public class RegularNetWindow extends CompNetWindow{
+public class RegularNetWindow extends NetworkWindow{
 
   /**
    * 
@@ -16,7 +16,7 @@ public class RegularNetWindow extends CompNetWindow{
     super(windowName);
   }
   
-  protected CompNetPainter getPainter(){
+  protected NetworkPainter getPainter(){
     return new RegularNetPainter(nodeNum, k);
   }
   

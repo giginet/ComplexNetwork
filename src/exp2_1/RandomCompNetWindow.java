@@ -1,9 +1,9 @@
 package exp2_1;
 
-import samp2_1.CompNetPainter;
-import samp2_1.CompNetWindow;
+import samp2_1.NetworkPainter;
+import samp2_1.NetworkWindow;
 
-public class RandomCompNetWindow extends CompNetWindow{
+public class RandomCompNetWindow extends NetworkWindow{
 
   /**
    * 
@@ -15,7 +15,7 @@ public class RandomCompNetWindow extends CompNetWindow{
     super(windowName);
   }
   
-  protected CompNetPainter getPainter(){
+  protected NetworkPainter getPainter(){
     return new RandomCompNetPainter(k);
   }
   

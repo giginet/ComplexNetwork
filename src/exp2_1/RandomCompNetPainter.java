@@ -9,13 +9,13 @@ package exp2_1;
 
 import java.util.Random;
 
-import samp2_1.CompNetPainter;
+import samp2_1.NetworkPainter;
 
 /**
  * @author giginet
  *
  */
-public class RandomCompNetPainter extends CompNetPainter{
+public class RandomCompNetPainter extends NetworkPainter{
   /**
    * 
    */

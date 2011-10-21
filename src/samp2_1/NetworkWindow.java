@@ -16,24 +16,25 @@ import javax.swing.JFrame;
  * @author giginet
  *
  */
-public class CompNetWindow extends JFrame{
+public class NetworkWindow extends JFrame{
   
   /**
    * 
    */
   private static final long serialVersionUID = 1L;
+  protected static final int nodeNum = 50; 
 
-  public CompNetWindow(String windowName){
+  public NetworkWindow(String windowName){
     setTitle(windowName);
     Container container = getContentPane();
-    CompNetPainter painter = getPainter();
+    NetworkPainter painter = getPainter();
     container.add(painter);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(600, 500);
   }
   
-  protected CompNetPainter getPainter(){
-    return new CompNetPainter();
+  protected NetworkPainter getPainter(){
+    return new NetworkPainter(new Network(nodeNum));
   }
   
   /**
@@ -41,7 +42,7 @@ public class CompNetWindow extends JFrame{
    * @param args
    */
   public static void main(String[] args){
-    CompNetWindow window = new CompNetWindow("ComplexNetwork Window");
+    NetworkWindow window = new NetworkWindow("ComplexNetwork Window");
     window.setVisible(true);
   }
 

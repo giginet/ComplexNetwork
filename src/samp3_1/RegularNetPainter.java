@@ -8,13 +8,13 @@
 package samp3_1;
 
 import samp2_1.Node;
-import samp2_1.CompNetPainter;
+import samp2_1.NetworkPainter;
 
 /**
  * @author giginet
  *
  */
-public class RegularNetPainter extends CompNetPainter{
+public class RegularNetPainter extends NetworkPainter{
   /**
    * 
    */

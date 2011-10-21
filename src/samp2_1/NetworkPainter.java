@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author giginet
  * 
  */
-public class CompNetPainter extends JPanel{
+public class NetworkPainter extends JPanel{
   /**
    * 
    */
@@ -27,16 +27,12 @@ public class CompNetPainter extends JPanel{
   protected Network network = null;
   protected BufferedImage image = null;
   protected Graphics imageGraphics = null;
-  protected int nodeNum = 50;
+  protected int nodeNum;
   protected static final double radius = 300.0;
 
-  public CompNetPainter(){
-    network = new Network(nodeNum);
-  }
-  
-  public CompNetPainter(int nodeNum){
-    this.nodeNum = nodeNum;;
-    network = new Network(nodeNum);
+  public NetworkPainter(Network net){
+    this.network = net;
+    this.nodeNum = net.getNodeNum();
   }
 
   public void paintComponent(Graphics g){
@@ -51,7 +47,7 @@ public class CompNetPainter extends JPanel{
       imageGraphics.setColor(Color.white);
       imageGraphics.fillRect(0, 0, w, h);
       createNode(d);
-      createLink();
+      network.createLink();
     }
     super.paintComponent(g);
     
@@ -73,14 +69,6 @@ public class CompNetPainter extends JPanel{
     g.drawImage(image, 0, 0, this);
   }
   
-  protected void createLink(){
-    for(int i = 0; i < nodeNum; ++i){
-      for(int j = i + 1; j < nodeNum; ++j){
-        network.setLink(network.getNode(i), network.getNode(j));
-      }
-    }
-  }
-  
   protected void createNode(Dimension d){
     int centerX = d.width / 2;
     int centerY = d.height / 2;
@@ -94,5 +82,4 @@ public class CompNetPainter extends JPanel{
       network.getNodes().add(new Node(x, y));
     }
   }
-  
 }
