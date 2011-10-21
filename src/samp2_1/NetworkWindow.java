@@ -27,14 +27,14 @@ public class NetworkWindow extends JFrame{
   public NetworkWindow(String windowName){
     setTitle(windowName);
     Container container = getContentPane();
-    NetworkPainter painter = getPainter();
+    NetworkPainter painter = new NetworkPainter(getNetwork());
     container.add(painter);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(600, 500);
   }
   
-  protected NetworkPainter getPainter(){
-    return new NetworkPainter(new Network(nodeNum));
+  protected Network getNetwork(){
+    return new Network(nodeNum);
   }
   
   /**

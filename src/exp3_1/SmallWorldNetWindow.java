@@ -1,5 +1,6 @@
 package exp3_1;
 
+import samp2_1.Network;
 import samp2_1.NetworkPainter;
 import samp2_1.NetworkWindow;
 
@@ -17,8 +18,9 @@ public class SmallWorldNetWindow extends NetworkWindow{
     super(windowName);
   }
   
-  protected NetworkPainter getPainter(){
-    return new SmallWorldNetPainter(nodeNum, k, p);
+  @Override
+  protected Network getNetwork(){
+    return new SmallWorldNetwork(nodeNum, k, p);
   }
   
   /**

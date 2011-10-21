@@ -8,7 +8,7 @@ public class Network{
   
   private ArrayList<Link> links = null;  
   protected ArrayList<Node> nodes = null;
-  private int nodeNum;
+  protected int nodeNum;
   private int[][] net = null;
   private int noLink;
   

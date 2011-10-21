@@ -1,36 +1,33 @@
 /**
- * RandomCompNetPainter.java
+ * RandomNetwork.java
  * ComplexNetwork
  *
- * Created by giginet on 2011/10/18
+ * Created by giginet on 2011/10/21
  * 
  */
 package samp3_1;
 
+import java.util.Random;
+
+import samp2_1.Network;
 import samp2_1.Node;
-import samp2_1.NetworkPainter;
 
 /**
  * @author giginet
  *
  */
-public class RegularNetPainter extends NetworkPainter{
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-  private int k;
+public class RegularNetwork extends Network{
+  protected int k = 1;
   
-  public RegularNetPainter(int nodeNum, int k){
+  public RegularNetwork(int nodeNum){
+    super(nodeNum);
+  }
+  
+  public RegularNetwork(int nodeNum, int k){
     super(nodeNum);
     this.k = k;
   }
   
-  public RegularNetPainter(int k){
-    super();
-    this.k = k;
-  }
-
   @Override
   protected void createLink(){
     int half = k/2;
@@ -38,7 +35,7 @@ public class RegularNetPainter extends NetworkPainter{
       for(int i=0;i<nodeNum;++i){
         for(int j=1;j<=half;++j){
           int neighborIndex = (i+j)%nodeNum;
-          network.setLink(network.getNode(i), network.getNode(neighborIndex));
+          setLink(nodes.get(i), nodes.get(neighborIndex));
         }
       }
     }
@@ -49,10 +46,9 @@ public class RegularNetPainter extends NetworkPainter{
    * @return
    */
   protected boolean isRegular(){
-    for(Node node : network.getNodes()){
+    for(Node node : nodes){
       if(node.getNeighborCount() != this.k) return false;
     }
     return true;
   }
-  
 }
