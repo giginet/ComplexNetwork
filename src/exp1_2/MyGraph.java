@@ -17,17 +17,16 @@ public class MyGraph extends JPanel{
    * 
    */
   private static final long serialVersionUID = 1L;
-  protected double[] hist;
   protected static final String inputFile = "output.txt";
-  private final int graphWidth = 800;
-  private final int graphHeight = 800;
+  protected final int graphWidth = 800;
+  protected final int graphHeight = 800;
+  protected final int graphXCount = 100;
   private int size;
   private double magnifyRate = 0;
   
   public MyGraph(int size){
     setBackground(Color.white);
     this.size = size;
-    this.input();
   }
   
   protected double[] readFile(String fileName){
@@ -51,38 +50,43 @@ public class MyGraph extends JPanel{
     return data;
   }
   
-  protected void input(){
-    double[] data = readFile(inputFile);
-    hist = new double[100];
+  protected double[] input(){
+    double[] read = readFile(inputFile);
+    double[] hist = new double[this.graphXCount];
     for(int i=0;i<hist.length;++i){
       hist[i] = 0;
     }
-    for(int i=0;i<data.length;++i){
-      int index = (int)Math.round(data[i]/20);
+    for(int i=0;i<read.length;++i){
+      int index = (int)Math.round(read[i]/20);
       if(Math.abs(index) < hist.length/2){
         ++hist[index+hist.length/2];
       }
     }
+    return hist;
+  }
+  
+  public double calcMagnifyRate(double[] d){
     int max = 0;
-    for(int i=0;i<hist.length;++i){
-      if(hist[i] > max){
-        max = (int)hist[i];
+    for(int i=0;i<d.length;++i){
+      if(d[i] > max){
+        max = (int)d[i];
       }
     }
-    magnifyRate = (graphHeight * 0.8)/max;
+    return (graphHeight * 0.8)/max;
   }
   
   public void paintComponent(Graphics g){
+    double[] data = input();
+    magnifyRate = calcMagnifyRate(data);
     super.paintComponent(g);
-    
     g.setColor(Color.black);
     g.drawLine(graphWidth/2, 0, graphWidth/2, graphHeight);
     g.drawLine(0, (int)(graphHeight*0.9), graphWidth, (int)(graphHeight*0.9));
-    int barWidth = graphWidth/hist.length;
+    int barWidth = graphWidth/data.length;
     
     g.setColor(Color.blue);
-    for(int d=0; d<hist.length; ++d){
-      int h = (int)(hist[d]*magnifyRate);
+    for(int d=0; d<data.length; ++d){
+      int h = (int)(data[d]*magnifyRate);
       g.drawRect(d*barWidth, (int)(graphHeight*0.9)-h, barWidth, h);
     }
   }

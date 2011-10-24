@@ -25,8 +25,8 @@ public class RandomOrderGraph extends MyGraph{
   }
   
   @Override
-  protected void input(){
-    hist = readFile(inputFile);
+  protected double[] input(){
+    return readFile(inputFile);
   }
 
   /**
