@@ -8,6 +8,7 @@ public class Network{
   protected ArrayList<Node> nodes = null;
   protected int nodeNum;
   private int[][] net = null;
+  private int[][] monoNet = null;
   private int noLink;
   
   public Network(int num){
@@ -21,6 +22,7 @@ public class Network{
       }
     }
     links = new ArrayList<Link>();
+    monoNet = this.createMonoNet();
   }
   
   public void setLink(Node n1, Node n2){
@@ -53,6 +55,13 @@ public class Network{
   }
   
   /**
+   * @return the noLink
+   */
+  public int getNoLink(){
+    return noLink;
+  }
+
+  /**
    * @return the nodeNum
    */
   public int getNodeNum(){
@@ -69,6 +78,29 @@ public class Network{
         setLink(nodes.get(i), nodes.get(j));
       }
     }
+  }
+  
+  private int[][] createMonoNet(){
+    int[][] mono = new int[nodeNum][nodeNum]; 
+    for(int n1 = 0; n1 < nodes.size(); ++n1){
+      for(int n2 = 0; n2 < nodes.size(); ++n2){
+        if(n1 == n2){
+          mono[n1][n2] = 0;
+        }else if(net[n1][n2] < noLink){
+          mono[n1][n2] = 1;
+        }else{
+          mono[n1][n2] = noLink;
+        }
+      }
+    }
+    return mono;
+  }
+
+  /**
+   * @return the monoNet
+   */
+  public int[][] getMonoNet(){
+    return monoNet;
   }
   
 }
