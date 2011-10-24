@@ -22,7 +22,7 @@ public class GraphWindow extends JFrame {
     Container container = getContentPane();
     OutputData data = getOutput();
     data.output();
-    graph = new MyGraph(count);
+    graph = getGraph();
     container.add(graph, BorderLayout.CENTER);
     container.add(titleLabel, BorderLayout.SOUTH);
     
@@ -33,6 +33,10 @@ public class GraphWindow extends JFrame {
   
   protected OutputData getOutput(){
     return new OutputData(count);
+  }
+  
+  protected MyGraph getGraph(){
+    return new MyGraph(count);
   }
   
   public static void main(String[] args) {

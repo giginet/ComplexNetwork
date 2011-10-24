@@ -17,12 +17,12 @@ public class MyGraph extends JPanel{
    * 
    */
   private static final long serialVersionUID = 1L;
-  private int[] hist;
+  protected double[] hist;
+  protected static final String inputFile = "output.txt";
   private final int graphWidth = 800;
   private final int graphHeight = 800;
   private int size;
   private double magnifyRate = 0;
-  private static final String inputFile = "output.txt";
   
   public MyGraph(int size){
     setBackground(Color.white);
@@ -30,7 +30,7 @@ public class MyGraph extends JPanel{
     this.input();
   }
   
-  private double[] readFile(String fileName){
+  protected double[] readFile(String fileName){
     double[] data = new double[this.size];
     try{
       FileReader fr = new FileReader(fileName);
@@ -51,9 +51,9 @@ public class MyGraph extends JPanel{
     return data;
   }
   
-  private void input(){
+  protected void input(){
     double[] data = readFile(inputFile);
-    hist = new int[100];
+    hist = new double[100];
     for(int i=0;i<hist.length;++i){
       hist[i] = 0;
     }
@@ -66,7 +66,7 @@ public class MyGraph extends JPanel{
     int max = 0;
     for(int i=0;i<hist.length;++i){
       if(hist[i] > max){
-        max = hist[i];
+        max = (int)hist[i];
       }
     }
     magnifyRate = (graphHeight * 0.8)/max;

@@ -8,6 +8,7 @@
 package exp2_2;
 
 import exp1_2.GraphWindow;
+import exp1_2.MyGraph;
 import exp1_2.OutputData;
 
 /**
@@ -29,6 +30,10 @@ public class RandomOrderWindow extends GraphWindow{
   protected OutputData getOutput(){
     System.out.println("ooo");
     return new RandomOrderDataset();
+  }
+  
+  protected MyGraph getGraph(){
+    return new RandomOrderGraph(50);
   }
   
   public static void main(String[] args) {
