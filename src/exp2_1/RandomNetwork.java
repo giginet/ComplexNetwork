@@ -28,7 +28,7 @@ public class RandomNetwork extends Network{
   }
   
   @Override
-  protected void createLink(){
+  public void createLink(){
     Random rand = new Random();
     for(int i = 0; i < nodeNum; ++i){
       for(int j = i + 1; j < nodeNum; ++j){

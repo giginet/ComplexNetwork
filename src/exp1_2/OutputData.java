@@ -9,10 +9,11 @@ public class OutputData{
   
   private double[] data;
   private final String outputFile = "output.txt";
+  protected int count;
   
   public OutputData(int count){
-    data = new double[count];
-    this. data = this.prepareData();
+    this.count = count;
+    this.data = this.prepareData();
   }
   
   public void setData(double[] data){
@@ -25,7 +26,7 @@ public class OutputData{
       
       BufferedWriter bw = new BufferedWriter(fw);
       
-      for(int d=0;d <data.length;++d) bw.write(""+d+","+data[d]+"\n");
+      for(int d=0;d <data.length;++d) bw.write("" + d + "," + data[d] + "\n");
       bw.close();
     }catch(IOException e){
       System.out.println(e);
@@ -34,7 +35,7 @@ public class OutputData{
   
   protected double[] prepareData(){
     Random r = new Random();
-    double[] data = new double[this.data.length];
+    double[] data = new double[count];
     for(int i=0;i<data.length;++i){
       data[i] = r.nextGaussian() * 200;
     }

@@ -11,6 +11,14 @@ public class Node{
   private ArrayList<Node> neighbor;
   
   public Node(int x, int y){
+    init(x, y);
+  }
+  
+  public Node(){
+    init(0, 0);
+  }
+  
+  private void init(int x, int y){
     this.id = nodeId;
     ++nodeId;
     this.x = x;

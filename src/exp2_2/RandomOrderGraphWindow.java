@@ -15,29 +15,30 @@ import exp1_2.OutputData;
  * @author giginet
  *
  */
-public class RandomOrderWindow extends GraphWindow{
+public class RandomOrderGraphWindow extends GraphWindow{
 
   /**
    * 
    */
   private static final long serialVersionUID = 1L;
-
-  public RandomOrderWindow(String name){
+  
+  public RandomOrderGraphWindow(String name){
     super(name);
+    // TODO Auto-generated constructor stub
   }
-
+  
   @Override
   protected OutputData getOutput(){
-    System.out.println("ooo");
     return new RandomOrderDataset();
   }
   
+  @Override
   protected MyGraph getGraph(){
     return new RandomOrderGraph(50);
   }
   
   public static void main(String[] args) {
-    GraphWindow window = new GraphWindow("Random Order Graph Window");
+    RandomOrderGraphWindow window = new RandomOrderGraphWindow("Random Order Graph Window");
     window.setVisible(true);
   }
 

@@ -7,8 +7,6 @@
  */
 package samp3_1;
 
-import java.util.Random;
-
 import samp2_1.Network;
 import samp2_1.Node;
 
@@ -29,7 +27,7 @@ public class RegularNetwork extends Network{
   }
   
   @Override
-  protected void createLink(){
+  public void createLink(){
     int half = k/2;
     while(!isRegular()){
       for(int i=0;i<nodeNum;++i){

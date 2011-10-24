@@ -26,7 +26,7 @@ public class SmallWorldNetwork extends RegularNetwork{
   }
   
   @Override
-  protected void createLink(){
+  public void createLink(){
     super.createLink();
     Random rand = new Random();
     for(Node node : nodes){

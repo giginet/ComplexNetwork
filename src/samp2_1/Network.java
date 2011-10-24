@@ -1,7 +1,5 @@
 package samp2_1;
 
-import java.awt.Dimension;
-import java.awt.Point;
 import java.util.ArrayList;
 
 public class Network{
@@ -60,17 +58,17 @@ public class Network{
   public int getNodeNum(){
     return nodeNum;
   }
+  
+  public void createNode(int x, int y){
+    nodes.add(new Node(x, y));
+  }
 
-  protected void createLink(){
+  public void createLink(){
     for(int i = 0; i < nodeNum; ++i){
       for(int j = i + 1; j < nodeNum; ++j){
         setLink(nodes.get(i), nodes.get(j));
       }
     }
-  }
-  
-  protected void createNode(int x, int y){
-    nodes.add(new Node(x, y));
   }
   
 }

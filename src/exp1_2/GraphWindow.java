@@ -12,9 +12,9 @@ public class GraphWindow extends JFrame {
    * 
    */
   private static final long serialVersionUID = 1L;
-  private MyGraph graph = null;
-  private final int count = 100000;
-  private final String fileName = "output.txt";
+  protected MyGraph graph = null;
+  protected final int count = 100000;
+  protected final String fileName = "output.txt";
   
   public GraphWindow(String name){
     setTitle(name);

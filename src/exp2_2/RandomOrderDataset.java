@@ -1,6 +1,7 @@
 package exp2_2;
 
 import exp1_2.OutputData;
+import exp2_1.RandomNetwork;
 
 public class RandomOrderDataset extends OutputData{
 
@@ -12,10 +13,12 @@ public class RandomOrderDataset extends OutputData{
   
   @Override
   protected double[] prepareData(){
-    /*System.out.println("aaa");
     RandomNetwork network = new RandomNetwork(nodeNum);
-    return network.getOrders();*/
-    return new double[50];
+    for(int i = 0; i < nodeNum; ++i){
+      network.createNode(0, 0);
+    }
+    network.createLink();
+    return network.getOrders();
   }
 
 }

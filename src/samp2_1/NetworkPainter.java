@@ -11,8 +11,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 /**
@@ -79,7 +77,7 @@ public class NetworkPainter extends JPanel{
       double nArc = arc * (double) i;
       int x = (int) (radius * Math.cos(nArc)) + centerX;
       int y = (int) (radius * Math.sin(nArc)) + centerY;
-      network.getNodes().add(new Node(x, y));
+      network.createNode(x, y);
     }
   }
 }
