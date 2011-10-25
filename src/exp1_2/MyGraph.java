@@ -21,6 +21,7 @@ public class MyGraph extends JPanel{
   protected final int graphWidth = 800;
   protected final int graphHeight = 800;
   protected final int graphXCount = 100;
+  protected int fileLength = 0;
   private int size;
   private double magnifyRate = 0;
   
@@ -40,6 +41,7 @@ public class MyGraph extends JPanel{
         int d = Integer.parseInt(t.nextToken());
         String s = t.nextToken();
         data[d] = Double.parseDouble(s);
+        ++fileLength;
       }
       br.close();
     }catch(FileNotFoundException e){

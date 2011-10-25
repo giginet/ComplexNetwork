@@ -28,8 +28,8 @@ public class Network{
   public void setLink(Node n1, Node n2){
     Link link = new Link(n1, n2);
     links.add(link);
-    net[n1.getId()][n2.getId()] = link.getId();
-    net[n2.getId()][n1.getId()] = link.getId();
+    net[n1.getId()%nodeNum][n2.getId()%nodeNum] = link.getId();
+    net[n2.getId()%nodeNum][n1.getId()%nodeNum] = link.getId();
     n1.connect(n2);
   }
   

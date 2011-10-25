@@ -26,7 +26,11 @@ public class RandomOrderGraph extends MyGraph{
   
   @Override
   protected double[] input(){
-    return readFile(inputFile);
+    double read[] = readFile(inputFile);
+    double result[] = new double[fileLength];
+    for(int i=0; i < fileLength; ++i){
+      result[i] = read[i];
+    }
+    return result;
   }
-
 }
