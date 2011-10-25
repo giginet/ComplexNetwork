@@ -1,16 +1,21 @@
 package exp2_2;
 
+import samp2_1.Network;
 import exp1_2.OutputData;
 import exp2_1.RandomNetwork;
 
 public class RandomOrderDataset extends OutputData{
 
-  private final static int nodeNum = 50;
-  private final static int k = 12;
-  private final static int N = 10;
+  protected final static int nodeNum = 1000;
+  protected final static int k = 12;
+  protected final static int N = 10;
   
   public RandomOrderDataset(){
     super(nodeNum);
+  }
+  
+  protected Network getNetwork(){
+    return new RandomNetwork(nodeNum, k);
   }
   
   @Override
@@ -18,7 +23,7 @@ public class RandomOrderDataset extends OutputData{
     double orders[] = new double[nodeNum];
     int max = 0;
     for(int n = 0; n < N; ++n){
-      RandomNetwork network = new RandomNetwork(nodeNum, k);
+      Network network = getNetwork();
       for(int i = 0; i < nodeNum; ++i){
         network.createNode(0, 0);
       }
