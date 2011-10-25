@@ -47,11 +47,20 @@ public class Network{
   
   public double[] getOrders(){
     double orders[] = new double[nodes.size()];
+    int max = 0;
     for(Node node : nodes){
       int order = node.getNeighborCount();
       ++orders[order];
+      if(max < order){
+        max = order;
+      }
     }
-    return orders;
+    
+    double[] result = new double[max];
+    for(int i=0; i < max; ++i){
+      result[i] = orders[i];
+    }
+    return result;
   }
   
   /**

@@ -29,12 +29,4 @@ public class RandomOrderGraph extends MyGraph{
     return readFile(inputFile);
   }
 
-  /**
-   * @param args
-   */
-  public static void main(String[] args){
-    // TODO Auto-generated method stub
-
-  }
-
 }
