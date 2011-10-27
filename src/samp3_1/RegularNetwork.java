@@ -30,9 +30,9 @@ public class RegularNetwork extends Network{
   public void createLink(){
     int half = k/2;
     while(!isRegular()){
-      for(int i=0;i<nodeNum;++i){
-        for(int j=1;j<=half;++j){
-          int neighborIndex = (i+j)%nodeNum;
+      for(int i = 0; i < nodeNum; ++i){
+        for(int j = 1; j <= half; ++j){
+          int neighborIndex = (i + j) % nodeNum;
           setLink(nodes.get(i), nodes.get(neighborIndex));
         }
       }
@@ -49,4 +49,5 @@ public class RegularNetwork extends Network{
     }
     return true;
   }
+
 }

@@ -55,10 +55,9 @@ public class Network{
         max = order;
       }
     }
-    
-    double[] result = new double[max];
-    for(int i=0; i < max; ++i){
-      result[i] = orders[i];
+    double[] result = new double[max+1];
+    for(int i=1; i <= max; ++i){
+      result[i-1] = orders[i];
     }
     return result;
   }
