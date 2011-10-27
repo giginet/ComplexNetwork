@@ -13,16 +13,23 @@ import samp2_1.Network;
  * @author giginet
  *
  */
-public class Cluster{
-  Network network = null;
-  int nodeNum;
-  
-  public Cluster(Network network, int n){
-    this.network = network;
-    this.nodeNum = n;
+public abstract class Cluster{
+  protected Network getNetwork(){
+    return null;
   }
   
-  public double calcCluster(){
+  public double calcClusterAverage(int times){
+    double result = 0;
+    for(int i = 0; i < times; ++i){
+      result += calcCluster();
+    }
+    return result/(double)times;
+  }
+  
+  private double calcCluster(){
+    Network network = getNetwork();
+    int nodeNum = network.getNodeNum();
+    
     int k = 0;
     int e = 0;
     int[] id = new int[nodeNum];
