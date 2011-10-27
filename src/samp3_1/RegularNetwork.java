@@ -7,6 +7,8 @@
  */
 package samp3_1;
 
+import java.util.Random;
+
 import samp2_1.Network;
 import samp2_1.Node;
 
@@ -16,6 +18,7 @@ import samp2_1.Node;
  */
 public class RegularNetwork extends Network{
   protected int k = 1;
+  protected double probability;
   
   public RegularNetwork(int nodeNum){
     super(nodeNum);
@@ -24,6 +27,13 @@ public class RegularNetwork extends Network{
   public RegularNetwork(int nodeNum, int k){
     super(nodeNum);
     this.k = k;
+    createLink();
+  }
+  
+  public RegularNetwork(int nodeNum, int k, double p){
+    super(nodeNum);
+    this.k = k;
+    this.probability = p;
     createLink();
   }
   
@@ -39,6 +49,19 @@ public class RegularNetwork extends Network{
       }
     }
     super.createLink();
+  }
+  
+  /**
+   * i番目のノードについて、つなぎ替えを行うか判定してつなぎ替えます（アニメーション用）
+   * @param i
+   */
+  public void reconnect(int i){
+    Random rand = new Random();
+    Node node = nodes.get(i);
+    if(rand.nextDouble() < this.probability){
+      setLink(node, nodes.get(rand.nextInt(nodeNum)));
+    }
+    monoNet = createMonoNet();
   }
   
   /**

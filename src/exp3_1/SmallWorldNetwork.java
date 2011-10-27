@@ -7,9 +7,6 @@
  */
 package exp3_1;
 
-import java.util.Random;
-
-import samp2_1.Node;
 import samp3_1.RegularNetwork;
 
 /**
@@ -18,7 +15,6 @@ import samp3_1.RegularNetwork;
  */
 public class SmallWorldNetwork extends RegularNetwork{
   protected int k = 1;
-  private double probability;
   
   public SmallWorldNetwork(int nodeNum, int k, double p){
     super(nodeNum, k);
@@ -29,12 +25,8 @@ public class SmallWorldNetwork extends RegularNetwork{
   @Override
   public void createLink(){
     super.createLink();
-    Random rand = new Random();
-    for(Node node : nodes){
-      if(rand.nextDouble() < this.probability){
-        setLink(node, nodes.get(rand.nextInt(nodeNum)));
-      }
+    for(int i=0; i < nodeNum; ++i){
+      reconnect(i);
     }
-    monoNet = createMonoNet();
   }
 }
