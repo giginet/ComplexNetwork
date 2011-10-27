@@ -13,17 +13,24 @@ import samp2_1.Network;
  * @author giginet
  *
  */
-public class Dijkstra{
+public abstract class Dijkstra{
   
-  Network network = null;
-  int nodeNum;
-  
-  public Dijkstra(Network network){
-    this.network = network;
-    this.nodeNum = network.getNodeNum();
+  protected Network getNetwork(){
+    return null;
   }
   
-  public int calcPath(int start){
+  public int calcPathAverage(int times){
+    double result = 0;
+    for(int i = 0; i < times; ++i){
+      result += (double)calcPath(0);
+    }
+    return (int)(result/(double)times);
+  }
+  
+  private int calcPath(int start){
+    Network network = getNetwork();
+    int nodeNum = network.getNodeNum();
+    
     int min;
     int p = 0;
     int[] lengthes = new int[nodeNum];
@@ -45,7 +52,7 @@ public class Dijkstra{
       v[p] = 1;
       
       if(min == network.getNoLink()){
-        System.out.println("繋がってません");
+        //System.out.println("繋がってません");
       }
       for(int j = 0; j < nodeNum; ++j){
         if(lengthes[p] + network.getMonoNet()[p][j] < lengthes[j]){
