@@ -8,7 +8,7 @@ public abstract class Network{
   protected ArrayList<Node> nodes = null;
   protected int nodeNum;
   private int[][] net = null;
-  private int[][] monoNet = null;
+  protected int[][] monoNet = null;
   private int noLink;
   
   public Network(int num){
@@ -23,15 +23,15 @@ public abstract class Network{
     }
     links = new ArrayList<Link>();
     for(int i = 0; i < nodeNum; ++i){
-      createNode(0, 0);
+      createNode(i, 0, 0);
     }
   }
   
   public void setLink(Node n1, Node n2){
-    Link link = new Link(n1, n2);
+    Link link = new Link(links.size(), n1, n2);
     links.add(link);
-    net[n1.getId()%nodeNum][n2.getId()%nodeNum] = link.getId();
-    net[n2.getId()%nodeNum][n1.getId()%nodeNum] = link.getId();
+    net[n1.getId()][n2.getId()] = link.getId();
+    net[n2.getId()][n1.getId()] = link.getId();
     n1.connect(n2);
   }
   
@@ -78,15 +78,15 @@ public abstract class Network{
     return nodeNum;
   }
   
-  public void createNode(int x, int y){
-    nodes.add(new Node(x, y));
+  public void createNode(int n, int x, int y){
+    nodes.add(new Node(n, x, y));
   }
 
   public void createLink(){
     monoNet = this.createMonoNet();
   }
   
-  private int[][] createMonoNet(){
+  protected int[][] createMonoNet(){
     int[][] mono = new int[nodeNum][nodeNum]; 
     for(int n1 = 0; n1 < nodes.size(); ++n1){
       for(int n2 = 0; n2 < nodes.size(); ++n2){

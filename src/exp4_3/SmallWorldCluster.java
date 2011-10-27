@@ -1,31 +1,28 @@
 /**
- * SmallWorldDijkstra.java
- * ComplexNetwork
- *
- * Created by giginet on 2011/10/27
- * 
+ *  SmallWorldCruster.java 
+ *  created by giginet on 2011/10/27
  */
 package exp4_3;
 
 import exp3_1.SmallWorldNetwork;
 import samp2_1.Network;
-import samp4_1.Dijkstra;
+import samp4_2.Cluster;
 
 /**
  * @author giginet
  *
  */
-public class SmallWorldDijkstra extends Dijkstra{
+public class SmallWorldCluster extends Cluster{
 
-  private final static int N = 50;
-  private final static int k = 12;
+  private static final int N = 50;
+  private static final int k = 12;
   private double probability;
-  private int times = 10;
+  private static final int times = 10;
   
-  public SmallWorldDijkstra(){
+  public SmallWorldCluster(){
     for(double p = 0; p <= 1.00; p += 0.01){
       this.probability = p;
-      System.out.println(p + " " + calcPathAverage(times));
+      System.out.println(p + " " + calcClusterAverage(times));
     }
   }
   
@@ -38,7 +35,7 @@ public class SmallWorldDijkstra extends Dijkstra{
    * @param args
    */
   public static void main(String[] args){
-    new SmallWorldDijkstra();
+    new SmallWorldCluster();
   }
 
 }

@@ -4,23 +4,21 @@ import java.util.ArrayList;
 
 public class Node{
   
-  private static int nodeId = 0;
   private int id;
   private int x;
   private int y;
   private ArrayList<Node> neighbor;
   
-  public Node(int x, int y){
-    init(x, y);
+  public Node(int n, int x, int y){
+    init(n, x, y);
   }
   
-  public Node(){
-    init(0, 0);
+  public Node(int n){
+    init(n, 0, 0);
   }
   
-  private void init(int x, int y){
-    this.id = nodeId;
-    ++nodeId;
+  private void init(int n, int x, int y){
+    this.id = n;
     setPosition(x, y);
     neighbor = new ArrayList<Node>();
   }

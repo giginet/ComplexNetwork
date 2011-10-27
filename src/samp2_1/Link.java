@@ -2,15 +2,13 @@ package samp2_1;
 
 public class Link{
   
-  private static int linkId = 0;
   private Node node1 = null;
   private Node node2 = null;
   
   int id;
   
-  public Link(Node n1, Node n2){
-    this.id = linkId;
-    ++linkId;
+  public Link(int id, Node n1, Node n2){
+    this.id = id;
     this.node1 = n1;
     this.node2 = n2;
   }

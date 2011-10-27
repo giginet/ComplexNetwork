@@ -14,9 +14,6 @@ import samp2_1.Network;
  *
  */
 public abstract class Cluster{
-  protected Network getNetwork(){
-    return null;
-  }
   
   public double calcClusterAverage(int times){
     double result = 0;
@@ -24,6 +21,10 @@ public abstract class Cluster{
       result += calcCluster();
     }
     return result/(double)times;
+  }
+  
+  protected Network getNetwork(){
+    return null;
   }
   
   private double calcCluster(){
