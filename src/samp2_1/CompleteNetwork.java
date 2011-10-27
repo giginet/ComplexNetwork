@@ -14,5 +14,6 @@ public class CompleteNetwork extends Network{
         setLink(nodes.get(i), nodes.get(j));
       }
     }
+    super.createLink();
   }
 }

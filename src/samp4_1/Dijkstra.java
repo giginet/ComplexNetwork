@@ -33,7 +33,6 @@ public class Dijkstra{
       lengthes[i] = network.getNoLink();
       v[i] = 0;
     }
-    
     lengthes[start] = 0;
     for(int i = 0; i < nodeNum; ++i){
       min = network.getNoLink();
@@ -47,11 +46,10 @@ public class Dijkstra{
       
       if(min == network.getNoLink()){
         System.out.println("繋がってません");
-        
-        for(int j = 0; j < nodeNum; ++j){
-          if(lengthes[p] + network.getMonoNet()[p][j] < lengthes[j]){
-            lengthes[j] = lengthes[p] + network.getMonoNet()[p][j];
-          }
+      }
+      for(int j = 0; j < nodeNum; ++j){
+        if(lengthes[p] + network.getMonoNet()[p][j] < lengthes[j]){
+          lengthes[j] = lengthes[p] + network.getMonoNet()[p][j];
         }
       }
     }

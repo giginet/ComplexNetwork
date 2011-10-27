@@ -35,5 +35,6 @@ public class SmallWorldNetwork extends RegularNetwork{
         setLink(node, nodes.get(rand.nextInt(nodeNum)));
       }
     }
+    super.createLink();
   }
 }

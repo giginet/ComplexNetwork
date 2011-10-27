@@ -39,5 +39,6 @@ public class RandomNetwork extends Network{
         }
       }
     }
+    super.createLink();
   }
 }

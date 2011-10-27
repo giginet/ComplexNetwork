@@ -22,7 +22,6 @@ public abstract class Network{
       }
     }
     links = new ArrayList<Link>();
-    monoNet = this.createMonoNet();
     for(int i = 0; i < nodeNum; ++i){
       createNode(0, 0);
     }
@@ -84,6 +83,7 @@ public abstract class Network{
   }
 
   public void createLink(){
+    monoNet = this.createMonoNet();
   }
   
   private int[][] createMonoNet(){

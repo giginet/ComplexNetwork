@@ -38,6 +38,7 @@ public class RegularNetwork extends Network{
         }
       }
     }
+    super.createLink();
   }
   
   /**

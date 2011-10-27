@@ -5,7 +5,6 @@
 package exp4_1;
 
 import exp2_1.RandomNetwork;
-import samp2_1.Network;
 import samp4_1.Dijkstra;
 
 /**
@@ -19,7 +18,7 @@ public class RandomDijkstra extends Dijkstra{
   
   public RandomDijkstra(){
     super(new RandomNetwork(N, k));
-    System.out.println(calcPath(1));
+    System.out.println(calcPath(2));
   }
   
   public static void main(String args[]){
