@@ -8,7 +8,6 @@
 package exp3_2;
 
 import samp2_1.Network;
-import samp3_1.RegularNetwork;
 import exp2_2.RandomOrderDataset;
 import exp3_1.SmallWorldNetwork;
 
@@ -25,7 +24,6 @@ public class RegularNetworkDataset extends RandomOrderDataset{
   
   @Override
   protected Network getNetwork(){
-    //return new RegularNetwork(nodeNum, k);
     return new SmallWorldNetwork(nodeNum, k, p);
   }
 

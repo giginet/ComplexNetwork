@@ -25,7 +25,6 @@ public class RandomOrderGraphWindow extends GraphWindow{
   
   public RandomOrderGraphWindow(String name){
     super(name);
-    // TODO Auto-generated constructor stub
   }
   
   @Override

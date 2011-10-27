@@ -21,9 +21,13 @@ public class Node{
   private void init(int x, int y){
     this.id = nodeId;
     ++nodeId;
+    setPosition(x, y);
+    neighbor = new ArrayList<Node>();
+  }
+  
+  public void setPosition(int x, int y){
     this.x = x;
     this.y = y;
-    neighbor = new ArrayList<Node>();
   }
 
   /**

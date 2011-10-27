@@ -2,7 +2,7 @@ package samp2_1;
 
 import java.util.ArrayList;
 
-public class Network{
+public abstract class Network{
   
   private ArrayList<Link> links = null;  
   protected ArrayList<Node> nodes = null;
@@ -15,14 +15,17 @@ public class Network{
     nodeNum = num;
     net = new int[num][num];
     nodes = new ArrayList<Node>();
-    noLink = 2*num*num;
-    for(int i=0;i<num;++i){
-      for(int j=0;j<num;++j){
+    noLink = 2 * num * num;
+    for(int i = 0; i < num; ++i){
+      for(int j = 0; j < num; ++j){
         net[i][j] = noLink;
       }
     }
     links = new ArrayList<Link>();
     monoNet = this.createMonoNet();
+    for(int i = 0; i < nodeNum; ++i){
+      createNode(0, 0);
+    }
   }
   
   public void setLink(Node n1, Node n2){
@@ -81,11 +84,6 @@ public class Network{
   }
 
   public void createLink(){
-    for(int i = 0; i < nodeNum; ++i){
-      for(int j = i + 1; j < nodeNum; ++j){
-        setLink(nodes.get(i), nodes.get(j));
-      }
-    }
   }
   
   private int[][] createMonoNet(){

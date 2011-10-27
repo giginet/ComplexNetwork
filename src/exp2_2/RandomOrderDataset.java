@@ -22,12 +22,8 @@ public class RandomOrderDataset extends OutputData{
   protected double[] prepareData(){
     double orders[] = new double[nodeNum];
     int max = 0;
-    for(int n = 0; n < N; ++n){
+    for(int n = 0; n < 10; ++n){
       Network network = getNetwork();
-      for(int i = 0; i < nodeNum; ++i){
-        network.createNode(0, 0);
-      }
-      network.createLink();
       double[] order = network.getOrders();
       if(max < order.length){
         max = order.length;

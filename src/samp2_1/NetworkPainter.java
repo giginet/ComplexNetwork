@@ -44,8 +44,7 @@ public class NetworkPainter extends JPanel{
 
       imageGraphics.setColor(Color.white);
       imageGraphics.fillRect(0, 0, w, h);
-      createNode(d);
-      network.createLink();
+      setNodePoint(d);
     }
     super.paintComponent(g);
     
@@ -67,7 +66,7 @@ public class NetworkPainter extends JPanel{
     g.drawImage(image, 0, 0, this);
   }
   
-  protected void createNode(Dimension d){
+  protected void setNodePoint(Dimension d){
     int centerX = d.width / 2;
     int centerY = d.height / 2;
 
@@ -77,7 +76,7 @@ public class NetworkPainter extends JPanel{
       double nArc = arc * (double) i;
       int x = (int) (radius * Math.cos(nArc)) + centerX;
       int y = (int) (radius * Math.sin(nArc)) + centerY;
-      network.createNode(x, y);
+      network.getNode(i).setPosition(x, y);
     }
   }
 }

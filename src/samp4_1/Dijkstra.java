@@ -18,9 +18,9 @@ public class Dijkstra{
   Network network = null;
   int nodeNum;
   
-  public Dijkstra(Network network, int n){
+  public Dijkstra(Network network){
     this.network = network;
-    this.nodeNum = n;
+    this.nodeNum = network.getNodeNum();
   }
   
   public int calcPath(int start){

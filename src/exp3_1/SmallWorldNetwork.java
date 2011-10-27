@@ -23,6 +23,7 @@ public class SmallWorldNetwork extends RegularNetwork{
   public SmallWorldNetwork(int nodeNum, int k, double p){
     super(nodeNum, k);
     this.probability = p;
+    createLink();
   }
   
   @Override

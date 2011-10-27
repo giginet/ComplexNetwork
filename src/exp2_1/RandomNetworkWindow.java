@@ -1,7 +1,6 @@
 package exp2_1;
 
 import samp2_1.Network;
-import samp2_1.NetworkPainter;
 import samp2_1.NetworkWindow;
 
 public class RandomNetworkWindow extends NetworkWindow{

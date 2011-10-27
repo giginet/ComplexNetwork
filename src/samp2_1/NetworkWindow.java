@@ -8,15 +8,13 @@
 package samp2_1;
 
 import java.awt.Container;
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
 
 /**
  * @author giginet
  *
  */
-public class NetworkWindow extends JFrame{
+public abstract class NetworkWindow extends JFrame{
   
   /**
    * 
@@ -34,16 +32,7 @@ public class NetworkWindow extends JFrame{
   }
   
   protected Network getNetwork(){
-    return new Network(nodeNum);
-  }
-  
-  /**
-   * 
-   * @param args
-   */
-  public static void main(String[] args){
-    NetworkWindow window = new NetworkWindow("ComplexNetwork Window");
-    window.setVisible(true);
+    return null;
   }
 
 }

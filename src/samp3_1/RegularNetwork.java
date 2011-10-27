@@ -24,6 +24,7 @@ public class RegularNetwork extends Network{
   public RegularNetwork(int nodeNum, int k){
     super(nodeNum);
     this.k = k;
+    createLink();
   }
   
   @Override

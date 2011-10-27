@@ -25,6 +25,7 @@ public class RandomNetwork extends Network{
   public RandomNetwork(int nodeNum, int k){
     super(nodeNum);
     this.k = k;
+    createLink();
   }
   
   @Override
