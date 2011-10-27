@@ -2,7 +2,6 @@ package samp2_1;
 
 public class CompleteNetwork extends Network{
   
-  
   public CompleteNetwork(int num){
     super(num);
     createLink();

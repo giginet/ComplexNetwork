@@ -34,11 +34,8 @@ public class Painter2_1_1 extends JPanel{
   private int width;
   private int height;
   
+  @Override
   public void paintComponent(Graphics g){
-    /**
-     * JPanelのpaintComponentをオーバーライドして、絵を描画できるようにする
-     * @param g Graphics
-     */
     // Graphicsでは一部利用できないメソッドなどがあるため、上位互換であるGraphics2Dにキャストする
     Graphics2D g2 = (Graphics2D)g;
     if(image == null){
