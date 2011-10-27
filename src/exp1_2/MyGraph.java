@@ -23,6 +23,7 @@ public class MyGraph extends JPanel{
   protected final int graphHeight = 800;
   protected final int graphXCount = 25;
   protected int fileLength = 0;
+  protected boolean showCenterLine = true;
   private int size;
   private double magnifyRate = 0;
   
@@ -33,6 +34,7 @@ public class MyGraph extends JPanel{
   
   protected double[] readFile(String fileName){
     double[] data = new double[this.size];
+    fileLength = 0;
     try{
       FileReader fr = new FileReader(fileName);
       BufferedReader br = new BufferedReader(fr);
@@ -92,7 +94,7 @@ public class MyGraph extends JPanel{
     magnifyRate = calcMagnifyRate(data);
     super.paintComponent(g);
     g2.setColor(Color.black);
-    g2.drawLine(graphWidth / 2, 0, graphWidth / 2, graphHeight);
+    if(showCenterLine) g2.drawLine(graphWidth / 2, 0, graphWidth / 2, graphHeight);
     g2.drawLine(0, (int)(graphHeight * 0.9), graphWidth, (int)(graphHeight * 0.9));
     int barWidth = graphWidth / data.length;
     String[] labels = getLabels(data);
@@ -101,7 +103,7 @@ public class MyGraph extends JPanel{
       g2.setColor(Color.blue);
       g2.drawRect(d * barWidth, (int)(graphHeight * 0.9) - h, barWidth, h);
       g2.setColor(Color.black);
-      g2.drawString(labels[d], (int)((d + 0.5) * barWidth), (int)(graphHeight * 0.9 + 10));
+      g2.drawString(labels[d], (int)((d + 0.3) * barWidth), (int)(graphHeight * 0.9 + 10));
     }
   }
 }

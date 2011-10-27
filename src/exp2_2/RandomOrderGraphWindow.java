@@ -21,7 +21,6 @@ public class RandomOrderGraphWindow extends GraphWindow{
    * 
    */
   private static final long serialVersionUID = 1L;
-  protected final int graphXCount = 100;
   
   public RandomOrderGraphWindow(String name){
     super(name);

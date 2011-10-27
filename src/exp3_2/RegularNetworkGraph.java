@@ -22,7 +22,16 @@ public class RegularNetworkGraph extends RandomOrderGraph{
 
   public RegularNetworkGraph(int size){
     super(size);
-    // TODO Auto-generated constructor stub
+    showCenterLine = false;
+  }
+  
+  @Override
+  protected String[] getLabels(double[] data){
+    String[] labels = new String[data.length];
+    for(int i = 0; i < data.length; ++i){
+      labels[i] = String.valueOf(i);
+    }
+    return labels;
   }
 
 }
