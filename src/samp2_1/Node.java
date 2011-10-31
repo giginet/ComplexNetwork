@@ -93,7 +93,7 @@ public class Node{
   
   public void disconnect(Node n){
     if(isConnect(n)){
-      n.neighbors.remove(n);
+      n.neighbors.remove(this);
       neighbors.remove(n);
     }
   }

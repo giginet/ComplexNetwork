@@ -59,8 +59,9 @@ public class RegularNetwork extends Network{
     Random rand = new Random();
     Node node = nodes.get(i);
     if(rand.nextDouble() < this.probability){
-      removeLink(node, node.getNeighbors().get(rand.nextInt(node.getNeighborCount())));
-      setLink(node, nodes.get(rand.nextInt(nodeNum)));
+      if(removeLink(node, node.getNeighbors().get(rand.nextInt(node.getNeighborCount())))){
+        setLink(node, nodes.get(rand.nextInt(nodeNum)));
+      }
     }
     monoNet = createMonoNet();
   }
