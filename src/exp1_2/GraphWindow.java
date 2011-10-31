@@ -13,7 +13,7 @@ public class GraphWindow extends JFrame {
    */
   private static final long serialVersionUID = 1L;
   protected MyGraph graph = null;
-  protected final int count = 100000;
+  protected final int count = 1000000;
   protected final String fileName = "output.txt";
   
   public GraphWindow(String name){
@@ -28,7 +28,7 @@ public class GraphWindow extends JFrame {
     
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
-    setSize(800, 800);
+    setSize(1200, 1200);
   }
   
   protected OutputData getOutput(){

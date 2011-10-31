@@ -6,7 +6,7 @@ import exp2_1.RandomNetwork;
 
 public class RandomOrderDataset extends OutputData{
 
-  protected final static int nodeNum = 1000;
+  protected final static int nodeNum = 50;
   protected final static int k = 12;
   protected final static int N = 10;
   

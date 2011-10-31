@@ -30,7 +30,7 @@ public class RandomOrderGraph extends MyGraph{
   protected String[] getLabels(double[] data){
     String[] labels = new String[data.length];
     for(int i = 0; i < data.length; ++i){
-      labels[i] = String.valueOf(i);
+      labels[i] = String.valueOf(i+1);
     }
     return labels;
   }

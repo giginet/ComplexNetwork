@@ -24,7 +24,7 @@ public class RandomNetworkWindow extends NetworkWindow{
    * @param args
    */
   public static void main(String[] args){
-    RandomNetworkWindow window = new RandomNetworkWindow("Random ComplexNetwork Window");
+    RandomNetworkWindow window = new RandomNetworkWindow("Random Network Window");
     window.setVisible(true);
   }
 }

@@ -19,9 +19,9 @@ public class MyGraph extends JPanel{
    */
   private static final long serialVersionUID = 1L;
   protected static final String inputFile = "output.txt";
-  protected final int graphWidth = 800;
-  protected final int graphHeight = 800;
-  protected final int graphXCount = 25;
+  protected final int graphWidth = 1200;
+  protected final int graphHeight = 1200;
+  protected final int graphXCount = 49;
   protected int fileLength = 0;
   protected boolean showCenterLine = true;
   private int size;
@@ -78,31 +78,50 @@ public class MyGraph extends JPanel{
     return labels;
   }
   
-  public double calcMagnifyRate(double[] d){
+  private double getMaxData(double[] d){
     int max = 0;
     for(int i=0;i<d.length;++i){
       if(d[i] > max){
         max = (int)d[i];
       }
     }
+    return max;
+  }
+  
+  public double calcMagnifyRate(double[] d){
+    double max = getMaxData(d);
     return (graphHeight * 0.8)/max;
   }
   
   public void paintComponent(Graphics g){
     Graphics2D g2 = (Graphics2D)g; 
     double[] data = input();
+    double sum = 0;
+    for(double d : data){      
+      sum += d;
+    }
+    double max = getMaxData(data);
+    double maxRate = max/sum;
     magnifyRate = calcMagnifyRate(data);
     super.paintComponent(g);
     g2.setColor(Color.black);
     if(showCenterLine) g2.drawLine(graphWidth / 2, 0, graphWidth / 2, graphHeight);
     g2.drawLine(0, (int)(graphHeight * 0.9), graphWidth, (int)(graphHeight * 0.9));
+    
+    for(int i=0; i < 6; ++i){
+      int p = (int)Math.pow(2, i);
+      g2.setColor(Color.LIGHT_GRAY);
+      int height = (int)(graphHeight * 0.9) - (int)(graphHeight * 0.8 * 1/p);
+      g2.drawLine(0, height, graphWidth, height);
+      g2.drawString(String.format("%.3f", maxRate * 100 * 1/p) + "%", (int)(graphWidth * 0.01), height);
+    }
     int barWidth = graphWidth / data.length;
     String[] labels = getLabels(data);
     for(int d = 0; d < data.length; ++d){
       int h = (int)(data[d] * magnifyRate);
       g2.setColor(Color.blue);
       g2.drawRect(d * barWidth, (int)(graphHeight * 0.9) - h, barWidth, h);
-      g2.setColor(Color.black);
+      g2.setColor(Color.DARK_GRAY);
       g2.drawString(labels[d], (int)((d + 0.3) * barWidth), (int)(graphHeight * 0.9 + 10));
     }
   }

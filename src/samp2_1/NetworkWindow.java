@@ -28,7 +28,7 @@ public abstract class NetworkWindow extends JFrame{
     NetworkPainter painter = new NetworkPainter(getNetwork());
     container.add(painter);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(600, 500);
+    setSize(800, 667);
   }
   
   protected Network getNetwork(){
