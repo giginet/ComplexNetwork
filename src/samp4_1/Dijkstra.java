@@ -19,15 +19,15 @@ public abstract class Dijkstra{
     return null;
   }
   
-  public int calcPathAverage(int times){
+  public double calcPathAverage(int times){
     double result = 0;
     for(int i = 0; i < times; ++i){
       result += (double)calcPath(0);
     }
-    return (int)(result/(double)times);
+    return result/(double)times;
   }
   
-  private int calcPath(int start){
+  private double calcPath(int start){
     Network network = getNetwork();
     int nodeNum = network.getNodeNum();
     
@@ -51,9 +51,6 @@ public abstract class Dijkstra{
       }
       v[p] = 1;
       
-      if(min == network.getNoLink()){
-        //System.out.println("繋がってません");
-      }
       for(int j = 0; j < nodeNum; ++j){
         if(lengthes[p] + network.getMonoNet()[p][j] < lengthes[j]){
           lengthes[j] = lengthes[p] + network.getMonoNet()[p][j];
@@ -65,6 +62,6 @@ public abstract class Dijkstra{
     for(int i=0; i < nodeNum; ++i){
       sum += lengthes[i];
     }
-    return sum;
+    return (double)sum/(double)nodeNum;
   }
 }

@@ -32,7 +32,7 @@ public class SmallWorldNetworkAnimationWindow extends JFrame{
     SmallWorldNetworkAnimator animator = new SmallWorldNetworkAnimator(getNetwork());
     container.add(animator);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(600, 500);
+    setSize(1000, 667);
     Thread thread = new Thread(animator);
     
     thread.start();

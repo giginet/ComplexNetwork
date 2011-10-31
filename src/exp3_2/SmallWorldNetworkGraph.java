@@ -25,13 +25,4 @@ public class SmallWorldNetworkGraph extends RandomOrderGraph{
     showCenterLine = false;
   }
   
-  @Override
-  protected String[] getLabels(double[] data){
-    String[] labels = new String[data.length];
-    for(int i = 0; i < data.length; ++i){
-      labels[i] = String.valueOf(i);
-    }
-    return labels;
-  }
-
 }

@@ -17,9 +17,9 @@ import exp3_1.SmallWorldNetwork;
  */
 public class SmallWorldNetworkDataset extends RandomOrderDataset{
 
-  protected final static int nodeNum = 1000;
+  protected final static int nodeNum = 10;
   protected final static int k = 4;
-  private final static double p = 0.00;
+  private final static double p = 0.5;
   protected final static int N = 1;
   
   @Override

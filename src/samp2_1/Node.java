@@ -7,7 +7,7 @@ public class Node{
   private int id;
   private int x;
   private int y;
-  private ArrayList<Node> neighbor;
+  private ArrayList<Node> neighbors;
   
   public Node(int n, int x, int y){
     init(n, x, y);
@@ -20,7 +20,7 @@ public class Node{
   private void init(int n, int x, int y){
     this.id = n;
     setPosition(x, y);
-    neighbor = new ArrayList<Node>();
+    neighbors = new ArrayList<Node>();
   }
   
   public void setPosition(int x, int y){
@@ -82,12 +82,27 @@ public class Node{
    * @param n
    */
   public void connect(Node n){
-    if(this.equals(n) || neighbor.contains(n) || n.neighbor.contains(this)) return;
-    neighbor.add(n);
-    n.neighbor.add(this);
+    if(this.equals(n) || isConnect(n)) return;
+    neighbors.add(n);
+    n.neighbors.add(this);
+  }
+  
+  public boolean isConnect(Node n){
+    return this.neighbors.contains(n);
+  }
+  
+  public void disconnect(Node n){
+    if(isConnect(n)){
+      n.neighbors.remove(n);
+      neighbors.remove(n);
+    }
+  }
+  
+  public ArrayList<Node> getNeighbors(){
+    return this.neighbors;
   }
 
   public int getNeighborCount(){
-    return neighbor.size();
+    return neighbors.size();
   }
 }

@@ -35,6 +35,18 @@ public abstract class Network{
     n1.connect(n2);
   }
   
+  public void removeLink(Node n1, Node n2){
+    for(Link link : links){
+      if(link.getNode1().equals(n1) && link.getNode2().equals(n2)){
+        links.remove(link);
+        break;
+      }
+    }
+    net[n1.getId()][n2.getId()] = noLink;
+    net[n2.getId()][n1.getId()] = noLink;
+    n1.disconnect(n2);
+  }
+  
   public boolean isLink(Node n1, Node n2){
     return !(net[n1.getId()][n2.getId()] == noLink || net[n2.getId()][n1.getId()] == noLink);
   }
